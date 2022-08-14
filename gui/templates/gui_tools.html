@@ -1,0 +1,24 @@
+
+{% load static %}
+{% load mptt_tags %}
+
+{% block toolscontent %}
+    <div class="tree">
+        <ul id="tools-tree-data">
+            <form class="form-horizontal" role="form" id="tools-form" method="post" action="" >
+                {% csrf_token %}
+
+                {% recursetree facets.tool_nodes %}
+                    <li class="context-menu-one">
+                        {{ node.name }}
+                        {% if not node.is_leaf_node %}
+                            <ul class="children context-menu-one">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+            </form>
+        </ul>
+    </div>
+{% endblock %}

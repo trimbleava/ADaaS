@@ -1,0 +1,50 @@
+[
+  {
+    "model": "reviews.category",
+    "pk": 1,
+    "fields": {
+      "name": "Construction",
+      "description": "Advertising for any construction related business"
+    }
+  },
+  {
+    "model": "reviews.category",
+    "pk": 2,
+    "fields": {
+      "name": "Continue Education/License Renewal",
+      "description": "Advertising for taking courses related to a license for renewal"     
+    }
+  },
+  {
+    "model": "reviews.category",
+    "pk": 3,
+    "fields": {
+      "name": "Market Place/Bazaar",
+      "description": "Advertising for a market place with food related items"
+    }
+  },
+  {
+    "model": "reviews.category",
+    "pk": 4,
+    "fields": {
+      "name": "Moving Provider/Vendor",
+      "description": "Advertising for moving companies or a vendor on behalf of moving company"
+    }
+  },
+  {
+    "model": "reviews.category",
+    "pk": 5,
+    "fields": {
+      "name": "Solar Provider/Vendor",
+      "description": "Advertising for sale or installation of solar products"
+    }
+  },
+  {
+    "model": "reviews.category",
+    "pk": 6,
+    "fields": {
+      "name": "Tutoring",
+      "description": "Advertising for tutorial offering, virtual or not"
+    }
+  }
+]

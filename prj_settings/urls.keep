@@ -1,0 +1,63 @@
+""" Default urlconf  """
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls import url
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView  # in 2.0+
+from django.contrib.sitemaps.views import index, sitemap
+from django.views.generic.base import TemplateView
+from django.views.defaults import (permission_denied,
+                                   page_not_found,
+                                   server_error)
+
+from gui.views import signup
+
+
+sitemaps = {
+    # Fill me with sitemaps
+}
+
+
+urlpatterns = [
+    # Apps
+    path(r'', include('gui.urls')),
+    path(r'', include('gisapp.urls')),
+    path(r'', include('graph.urls')),
+
+    # Accounts
+    path('login/', LoginView.as_view(template_name='login.html'), name="login"),
+    path('logout/', LogoutView.as_view(), {'next_page': '/'}, name='logout'),
+    url(r'^signup/$', signup, name='signup'),
+
+    # Admin
+    url(r'^admin/', admin.site.urls),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Sitemap
+    url(r'^sitemap\.xml$', index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}),
+
+    # robots.txt
+    url(r'^robots\.txt$',
+        TemplateView.as_view(
+            template_name='robots.txt',
+            content_type='text/plain')
+        ),
+]
+
+if settings.DEBUG:
+
+    # Serve media files through Django.
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+    # Show error pages during development
+    urlpatterns += [
+        url(r'^403/$', permission_denied),
+        url(r'^404/$', page_not_found),
+        url(r'^500/$', server_error)
+    ]
+

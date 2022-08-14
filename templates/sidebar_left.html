@@ -1,0 +1,180 @@
+{% load static %}
+{% load mptt_tags %}
+
+<div id="sidebar" class="container-fluid">  <!-- class="active" makes sidebar hidden at startup -->
+    <div class="sidebar-header">
+        <p>Table of Contents</p>
+    </div>
+    <hr><hr><hr>
+
+    <div id="sidebar-wrapper">
+        <div id="select-wrapper" class="container-fluid">
+            <div class="row">
+                <!-- model scenario, no-gutters to reduce distance between two columns   class="nav-link" href="#" class="nav-item dropdown "-->
+                <div id="model" class="col col-md-6 padding-1">
+                    <div data-toggle="tooltip" data-placement="bottom" title="Select a model scenario">
+                        <select id="modelchoice" class="form-control form-control-sm" name="model_sel_name">
+                            {% for model in facets.categories.ccmodels %}
+                                <optgroup label="{{model.name}}">
+                                    {% for scenario in model.scenario_rel.all %}
+                                        {% if facets.selected.scenario == scenario.desc %}
+                                            <option value="{{scenario.id}}" selected>{{scenario.desc}}</option>
+                                        {% else %}
+                                            <option value="{{scenario.id}}">{{scenario.desc}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </optgroup>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- new triple menu -->
+                <!-- div id="model" class="col col-md-6 padding-1">
+                    <div data-toggle="tooltip" data-placement="top" title="Select a model scenario">
+                        <select id="modelchoice" class="form-control form-control-sm" name="model_sel_name">
+                            <optgroup label="DFlow">
+                                <optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;2D">
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario A</option>
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario B</option>
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario C</option>
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario E</option>
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario F</option>
+                                    <option value="dflow-2d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario G</option>
+                                </optgroup>
+                                <optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;2D/1D">
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario A</option>
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario B</option>
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario C</option>
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario D</option>
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario E</option>
+                                    <option value="dflow-2d1d">&nbsp;&nbsp;&nbsp;&nbsp;Scenario F</option>
+                                    <option value="dflow-2d1d" selected>&nbsp;&nbsp;&nbsp;&nbsp;Scenario G</option>
+                                </optgroup>
+                            </optgroup>
+                            <optgroup label="NWM Coastal">
+                                <option value="nwm">&nbsp;&nbsp;&nbsp;&nbsp;Base Run</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div> -->
+
+
+                <!-- end new triple menu -->
+
+
+                <!-- prediction mode -->
+                <!-- In order for any form element to be sent in the POST, you need to have a name attribute,
+                     What is passed to the view in the POST is the value attribute of each option element. -->
+                <div id="prediction" class="col col-md-6 padding-1">
+                    <div data-toggle="tooltip" data-placement="top" title="Select prediction mode">
+                        <select id="predchoice" class="form-control form-control-sm" name="pred_sel_name">
+                            {% for pred in facets.categories.predtypes %}
+                                {% if facets.selected.predtype == pred.name %}
+                                    <option value="{{pred.id}}" selected>{{pred.name}}</option>
+                                {% else %}
+                                    <option value="{{pred.id}}">{{pred.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div id="event" class="col col-md-12 center">
+                    <!-- event table -->
+                    <div data-toggle="tooltip" data-placement="bottom" title="Select an event">
+                        <select id="eventchoice" class="form-control form-control-sm" name="event_sel_name">
+                            {% for cat in facets.categories.eventcats %}
+                            <optgroup label="{{cat.name}}">
+                                {% for event in cat.eventcat_rel.all %}
+                                    {% if facets.selected.event == event.desc %}
+                                        <option value="{{event.id}}" selected>{{event.desc}}</option>
+                                    {% else %}
+                                       <option value="{{event.id}}">{{event.desc}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div id="sidebar-toolbar-wrapper" class="container-fluid">
+            <ul id="sidebar-toolbar" class="nav nav-tabs" role="tablist">
+                <li class="nav-item ">
+                    <a class="nav-link" id="drive-tab" data-toggle="tab" href="{% url 'drive_tab' %}"
+                        role="tab" aria-controls="drive" aria-selected="false"
+                        data-placement="bottom"
+                        title="file drive">
+                        <img src="{% static 'img/folders16.gif' %}" alt="drive">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="layer-tab" data-toggle="tab" href="#layer"
+                        role="tab" aria-controls="layer" aria-selected="false"
+                        data-placement="bottom" title="Add layer to map display">
+                        <img src="{% static 'img/layers16.png' %}" alt="layer" >
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="map-tab" data-toggle="tab" href="#webmap-tab-id"
+                        role="tab" aria-controls="webmap-tab-id" aria-selected="false"
+                        data-placement="bottom" title="Display webmap" >
+                        <img src="{% static 'img/map16.png' %}" alt="webmap">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tool-tab" data-toggle="tab" href="#tool"
+                        role="tab" aria-controls="tool" aria-selected="false"
+                        data-placement="bottom" title="toolbox" >
+                        <img src="{% static 'img/tool16.png' %}" alt="toolbox">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="extension-tab" data-toggle="tab" href="#extension"
+                        role="tab" aria-controls="extention" aria-selected="false"
+                        data-placement="bottom" title="extensions">
+                        <img src="{% static 'img/extension16.png' %}" alt="extensions">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content" id="sidebar-toolbar-content">
+            <div class="tab-pane fade in show" id="drive" role="tabpanel" aria-labelledby="drive-tab">
+                this is a teeeeeeeeeeeeee
+                {{ facets.drive_nodes.as_p }}
+
+            </div>
+            <div class="tab-pane fade in show" id="extension" role="tabpanel" aria-labelledby="extension-tab">
+                extension tab
+            </div>
+            <div class="tab-pane fade in show" id="tool" role="tabpanel" aria-labelledby="tool-tab">
+                tool tab
+            </div>
+            <div class="tab-pane fade in show" id="layer" role="tabpanel" aria-labelledby="layer-tab">
+                layer tab
+                <form class="form-horizontal" role="form" id="layer-form" method="post" action="" >
+                    {% csrf_token %}
+                    {{ layer_nodes.as_p }}
+                </form>
+            </div>
+            <div class="tab-pane fade in show active" id="webmap-tab-id" role="tabpanel" aria-labelledby="map-tab">
+                <a class="dropdown-item" href="{% url 'webmap-name' %}">web map</a>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div id="webmap-tab-inset"></div>
+                </div>
+            </div>
+        </div><!-- end of tab-content -->
+
+    </div> <!-- end of sidebar-wrapper -->
+    <div id="sidebar-content-wrapper">
+
+    </div> <!-- end of sidebar-content-wrapper -->
+
+</div>

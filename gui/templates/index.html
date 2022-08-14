@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.3/jquery.contextMenu.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.3/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.6.3/jquery.ui.position.min.js"></script>
+
+  <title>Title</title>
+</head>
+<body>
+
+<span class="context-menu-lyr btn btn-neutral">right click me</span>
+
+
+<script type="text/javascript">
+
+$(function () {
+    $.contextMenu({
+        selector: '.context-menu-lyr',
+        callback: function(key, options) {
+            var m = "clicked: " + key;
+            window.console && console.log(m) || alert(m);
+        },
+        items: {
+            "add":    {name: "Add to map"},
+            "remove": {name: "Remove from map"},
+            "copy":   {name: "Copy"},
+            "paste":  {name: "Paste"},
+            "refresh":{name: "Refresh"},
+            "sep1": "---------",
+            "quit": {name: "Quit"}
+        }
+    });
+
+    $('.context-menu-lyr').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+
+
+</script>
+</body>
+</html>

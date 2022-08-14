@@ -1,0 +1,11 @@
+   <script src="//cdn.jsdelivr.net/npm/jquery.fancytree@2.27/dist/jquery.fancytree-all-deps.min.js"></script>
+   <script type="text/javascript">
+        $(function(){  // on page load
+            // Create the tree inside the div element.
+            $(".tree").fancytree({
+                expandLazy: true,
+                extensions: [],
+            }); // fancytree
+            // Note: Loading and initialization may be asynchronous, so the nodes may not be accessible yet.
+        }); // end of onload
+    </script>

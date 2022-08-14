@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block maincontent %}
+
+<div id="home-content" class="container-fluid center">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6"> col 1
+            <form role="form" action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-xs-6 col-sm-6"> col2
+            <div id="hyc-loc-map"></div>
+            <div>
+                <br>
+                <strong>Hydroclimate Diagnostics & Prediction Center Inc.</strong><br>
+                7280 Pioneer Lakes Circle<br>
+                West Palm Beach, FL 33413<br>
+                Phone: (561) 517-8378
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock maincontent %}
