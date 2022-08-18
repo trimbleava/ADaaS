@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Success{% endblock %}
+{% load static %}
+
+{% block maincontent %}
+
+<section class="container-fluid contact-section">
+    <h1><a href="{% url 'gui_success' %}">Success! Email sent.</a></h1>
+</section>
+
+{% endblock maincontent %}

@@ -1,5 +1,4 @@
-# Development environment-specific settings
-
+# Local environment-specific settings
 from .base_settings import *
 
 # Database
@@ -24,4 +23,4 @@ DEBUG = True
 # hosts
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "ADaaS.com"]
 
-WSGI_APPLICATION = 'prj_settings.wsgi_dev.application'
+WSGI_APPLICATION = 'prj_settings.wsgi_local.application'

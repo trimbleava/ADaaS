@@ -5,7 +5,7 @@ https://learndjango.com/tutorials/django-static-files#:~:text=Loading%20static%2
 grep -r "PRJ_SETTINGS" .
 
 django-admin startproject ADaaS    # Ad as a Service
-python -m venv .venv
+python -m venv venv
 source .venv/bin/activate
 pip install djangorestframework    # https://medium.com/django-rest/lets-build-a-basic-product-review-backend-with-drf-part-1-652dd9b95485
 pip install django-filter
@@ -78,3 +78,4 @@ https://dev.to/vlntsolo/how-to-split-django-settings-for-different-environments-
 # DJANGO_SETTINGS_MODULE: "your_main_django_app.settings.production"
 
 changed the project directory from ADaaS to PRJ_SETTINGS
+to add map to contact page had to activate googlemap api under hydroclimate to get a key.

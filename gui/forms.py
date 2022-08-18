@@ -1,40 +1,35 @@
 from django import forms
-from django.core.mail import send_mail, BadHeaderError
+from django.template.defaultfilters import mark_safe
+
 
 # Create your forms here.
 
 class ContactForm(forms.Form):
+    subject = forms.CharField(required=True, max_length = 150, widget=forms.TextInput(attrs={'size': '37'}))
     contact_name = forms.CharField(required=True, max_length = 50)
-    contact_email = forms.EmailField(required=True, max_length = 50)
-    content = forms.CharField(
-        required=True,
-        widget=forms.Textarea,
-        max_length = 2000
-    )
+    from_email = forms.EmailField(required=True, max_length = 50)
+    message = forms.CharField(required=True, widget=forms.Textarea, max_length=2000, initial="Enter your message here")
+    cc_myself = forms.BooleanField(required=False)
+
 
     def __init__(self, *args, **kwargs):
-        print("init...................")
         super(ContactForm, self).__init__(*args, **kwargs)
+
+        # examples
+        # self.fields['subject'].widget = forms.widgets.TextInput(
+        #    attrs={
+        #        'placeholder': 'subject',
+        #        'class': 'form-control',
+        #        'style': 'padding-left: 5px, margin-left: 10px !important;'
+        #    }
+        #)
+        ###
+        # my_field = forms.CharField(
+        #                max_length=100,
+        #                label = mark_safe('<strong>My Bold Field Label</strong>')
+        #            )
+        self.fields['subject'].label      = mark_safe('<strong>S u b j e c t</strong>')
         self.fields['contact_name'].label = "Your name:"
-        self.fields['contact_email'].label = "Your email:"
-        self.fields['content'].label = "Content:"
-
-        """_summary_
-            def send_email(self):
-        # send email using the self.cleaned_data dictionary
-        print("send_email")
-        try:
-            self.cleaned_data['subject'],
-            self.cleaned_data['message'],
-            self.cleaned_data.get('email', 'noreply@mysite.com')
-             # ['email@mysite.com'] 
-		except BadHeaderError:
-			return HttpResponse('Invalid header found.')
-        
-
-    def clean(self):
-        This is where you should be checking for required
-        fields and making sure the submitted data is safe.
-        print("clean..............")
-        pass
-        """
+        self.fields['from_email'].label   = "Your email:"
+        self.fields['message'].label = ""
+        self.fields['cc_myself'].label = "Cc myself"

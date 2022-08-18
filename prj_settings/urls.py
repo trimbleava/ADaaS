@@ -43,6 +43,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Apps
     path(r'', include('gui.urls')),
+    # path('', include('sendemail.urls')),
     # path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # path('', include(router.urls)),
