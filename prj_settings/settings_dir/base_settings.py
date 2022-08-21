@@ -92,20 +92,20 @@ REST_FRAMEWORK = {
 #
 # mail default settting
 #
-"""
-DEFAULT_FROM_EMAIL = 'trimbleava@gmail.com'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'    # send email to console
+
+DEFAULT_FROM_EMAIL = 'beheenMT@gmail.com'                           # Default: 'webmaster@localhost'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # send email to console
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_PASSWORD = None
-EMAIL_HOST_USER = None
-EMAIL_PORT = 25
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'dndihprbfddqbivw'                            # app id for ADaaS, registered on beheenMT account
+EMAIL_HOST_USER = 'beheenMT@gmail.com'
+EMAIL_PORT = 465
 EMAIL_USE_LOCALTIME = True
 EMAIL_USE_SSL = True             # port=465
 EMAIL_USE_TLS = False            # port=587
 EMAIL_SSL_CERTFILE = None        # if true, path to a PEM-formatted certificate chain file 
 EMAIL_SSL_KEYFILE = None         # if true, path to a PEM-formatted private key file
-EMAIL_TIMEOUT = None """
+EMAIL_TIMEOUT = None
 
 #
 # Password validation

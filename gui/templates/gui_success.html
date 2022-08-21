@@ -4,8 +4,11 @@
 
 {% block maincontent %}
 
-<section class="container-fluid contact-section">
-    <h1><a href="{% url 'gui_success' %}">Success! Email sent.</a></h1>
-</section>
-
+    <div id="success-email" class="container-fluid" > 
+        <div class="row mx-auto">
+            <div class="col-sm-12 text-center">
+                <p>{{message}}</p>
+            </div>
+        </div> 
+    </div>
 {% endblock maincontent %}

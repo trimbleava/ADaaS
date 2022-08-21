@@ -1,0 +1,164 @@
+/* bootstrap 4.6 - https://getbootstrap.com/docs/4.6/migration/ - 08/10/2022
+   Box-sizing
+   For more straightforward sizing in CSS, we switch the global box-sizing value from content-box to border-box. 
+   This ensures padding does not affect the final computed width of an element, but it can cause problems with 
+   some third party software like Google Maps and Google Custom Search Engine.
+
+   On the rare occasion you need to override it, use something like the following:
+   .selector-for-some-widget { box-sizing: content-box; }
+
+   Dropped the Glyphicons icon font, use fontawsome
+*/
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+/* property of container-flid in base.html */
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#content {
+    width: 100%;
+    transition: all 0.3s;
+    /* wrapper for page content to push down footer */
+    min-height: 100%;
+    height: auto;
+}
+
+.display {
+  padding: 50px 30px !important;  /* top, bottom - left, right */
+  overflow: auto !important;
+  min-height: 100vh !important;
+  /* height: 600px !important; */
+}
+
+/* Set the fixed height of the footer here */
+.footer {
+    width: 100%;
+    text-align: center;
+    height: 56px; 
+    overflow: auto;
+    color: #000;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;   /* same as display */
+    padding-bottom: 1px;
+}           
+
+/* contact page email and map, see js also*/
+#adaas-loc-map  { height: 400px; width: 400px; border: 1px solid #AAA;}
+
+/* success email */
+#success-email p {font-size: large !important; font-weight: bold !important;}
+
+/* ---------------------------------------------------
+    NAVIGATION STYLE
+----------------------------------------------------- */
+/* navbar properties changes here */
+.navbar {
+    width: 100%;
+    height: 56px;
+    background: -webkit-linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
+    background: -o-linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
+    background: linear-gradient(#3f9a15, #388813, #3f9a15, #388813, #3f9a15);
+    border-radius: 6px !important;
+    -moz-border-radius: 6px !important;
+    padding-top: 0px;
+    padding-bottom: 0px;   /* fits the logo into navbar */
+}
+
+.navbar-nav { flex-direction: row !important;}
+
+/* nav link items properties change - it looks like 'navbar-nav .nav-item .nav-link' does the same */
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+  font-size: 1.3em !important;
+  font-weight: bold;
+}
+
+/* controls spaces between nav items in both horizontal and vertical direction, when hamberger expanded */
+.navbar-nav .nav-link {
+    padding-right: 0.7rem;
+    padding-left: 0;
+}
+
+/* change the brand color, text, hover */
+.navbar .navbar-brand,
+.navbar .navbar-text {
+    color: #fff;
+    padding: 0px;
+    /* padding-top: 10px; left unsolved - when img is missing, affects the alt text to be in align with the link-items */
+    font-size: 1.3em !important;  /* same size as nav-item */
+    font-weight: bold;
+    height: 56px;                 /* same width as navbar */
+} 
+/*  remove after many tests
+.navbar-brand img {
+    height: 56px;                 same width as navbar-brand
+    float: left;
+    margin-bottom: 0px !important;
+    padding: 0px;
+} */
+
+.navbar-light .navbar-brand:hover, /* when img is missing, affects the alt text hover, focus color to be same as link-items */
+.navbar-light .navbar-brand:focus {
+    color: rgba(192, 192, 192, 0.5);
+}
+
+
+/* nav-link hover, focus */
+.navbar-light .navbar-nav .nav-link:hover, 
+.navbar-light .navbar-nav .nav-link:focus {
+    color: rgba(192, 192, 192, 0.5);
+    /* color: rgba(255, 140, 0, 0.5);  */
+}
+ 
+/* nav-link disabled color */
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: rgba(192, 192, 192, 0.3);
+    /* color: rgba(255, 140, 0, 0.3);  */
+}
+ 
+/* nav-link active color */
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+  color: rgb(255,140,0);
+}
+ 
+
+
+/* ---------------------------------------------------
+    MEDIA STYLE
+----------------------------------------------------- */
+/* bootstrap media query sizes */
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query since this is the default in Bootstrap ?? */
+@media (max-width: 576px) {
+    body { background-color: lightgrey;}
+    /* .navbar-nav { flex-direction: column !important;} */
+    /*.footer {font-size: 0.65rem !important;} */
+    #success-email p {font-size: medium !important;}
+} 
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+  
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
