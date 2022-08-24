@@ -22,15 +22,7 @@
     margin-left: auto;
 }
 
-#content {
-    width: 100%;
-    transition: all 0.3s;
-    /* wrapper for page content to push down footer */
-    min-height: 100%;
-    height: auto;
-}
-
-.display {
+.contents {
   padding: 50px 30px !important;  /* top, bottom - left, right */
   overflow: auto !important;
   min-height: 100vh !important;
@@ -47,7 +39,7 @@
     font-size: 1em !important;
     font-weight: bold !important;
     padding-left: 30px !important;
-    padding-right: 30px !important;   /* same as display */
+    padding-right: 30px !important;   /* same as contents */
     padding-bottom: 1px;
 }           
 
@@ -56,6 +48,25 @@
 
 /* success email */
 #success-email p {font-size: large !important; font-weight: bold !important;}
+
+/* services, including stepper */
+#service-content .card { background-color: #fff;}
+#service-content .card .card-title { background-color: #fff; font-weight:400 !important;}
+#service-content .col-sm-4 {margin-bottom: 15px !important;}
+#service-content .btn-toolbar { display: flex !important; } 
+.bs-stepper .step-trigger { padding: 5px; font-size: 1rem; }  /* 1 rem = 16 px */
+.active .bs-stepper-circle { background-color: #28a745; }
+
+/* buttons */
+.btn-circle.btn-md {
+    width: 60px;
+    height: 60px;
+    padding: 5px 5px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    /* text-align: center; */
+}
 
 /* ---------------------------------------------------
     NAVIGATION STYLE
@@ -144,10 +155,15 @@
 /* No media query since this is the default in Bootstrap ?? */
 @media (max-width: 576px) {
     body { background-color: lightgrey;}
-    /* .navbar-nav { flex-direction: column !important;} */
-    /*.footer {font-size: 0.65rem !important;} */
     #success-email p {font-size: medium !important;}
-} 
+
+    /* for stepper in services */
+    .bs-stepper .step-trigger { 
+        padding: 2px; font-size: 12px; 
+        white-space: break-spaces !important; width: 6rem !important; }
+    .bs-stepper-header { align-items:flex-start;}  /* keep the circles top align since text breaks pushes circles up */
+    .bs-stepper .line, .bs-stepper-line {-ms-flex: 1 0 10px; flex: 1 0 10px; } 
+    
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {}

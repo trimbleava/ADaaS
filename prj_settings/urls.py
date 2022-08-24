@@ -26,27 +26,25 @@ from django.views.defaults import permission_denied, page_not_found, server_erro
 #
 from rest_framework.routers import DefaultRouter
 
-# from reviews.views import ProductViewSet
+from reviews.views import ProductViewSet
 
-print("in global urls..............")
 
 """ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 ) """
 
-# router = DefaultRouter()
-# router.register(r'home', ProductViewSet, basename='Product')
-# router.register(r'product', ProductViewSet, basename='Product')
+router = DefaultRouter()
+router.register(r'product', ProductViewSet, basename='Product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Apps
     path(r'', include('gui.urls')),
-    # path('', include('sendemail.urls')),
+
     # path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    # path('', include(router.urls)),
+    path('', include(router.urls)),
 ]
 # urlpatterns = [
 #     url(r'^admin/', admin.site.urls),

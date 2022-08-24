@@ -33,3 +33,4 @@ class ContactForm(forms.Form):
         self.fields['from_email'].label   = "Your email:"
         self.fields['message'].label = ""
         self.fields['cc_myself'].label = "Cc myself"
+

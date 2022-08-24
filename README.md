@@ -47,6 +47,7 @@ add pic of JWT
 pip install djangorestframework-simplejwt
 add jwt to settings, urls
 created fixture to load initial data into category model
+python manage.py loaddata init_data_category.json
 # You can load data (i.e. initial) by calling manage.py loaddata <fixturename>, where <fixturename> 
 # is the name of the fixture file you have created. Each time you run loaddata, the data will be read 
 # from the fixture and reloaded into the database. Note this means that if you change one of the rows 
@@ -79,3 +80,5 @@ https://dev.to/vlntsolo/how-to-split-django-settings-for-different-environments-
 
 changed the project directory from ADaaS to PRJ_SETTINGS
 to add map to contact page had to activate googlemap api under hydroclimate to get a key.
+
+Adding stepper extension using cdn, if needed the library, I have a copy in "C:\Users\BT\PROJECTS\bs-stepper-master_for_ADaaS.zip"

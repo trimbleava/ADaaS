@@ -1,0 +1,47 @@
+<!-- Horizontal Steppers -->
+<div class="bs-stepper mx-auto">
+    <div class="bs-stepper-header" role="tablist">
+      <!-- your steps here -->
+      <div class="step" data-target="#signin-part">
+        <button type="button" class="step-trigger" role="tab" aria-controls="signin-part" id="signin-part-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label">Signin</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#plan-part">
+        <button type="button" class="step-trigger" role="tab" aria-controls="plan-part" id="plan-part-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">Select a Plan</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#payment-part">
+        <button type="button" class="step-trigger" role="tab" aria-controls="payment-part" id="payment-part-trigger">
+          <span class="bs-stepper-circle">3</span>
+          <span class="bs-stepper-label">Setup Payments</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#finish-part">
+        <button type="button" class="step-trigger" role="tab" aria-controls="finish-part" id="finish-part-trigger">
+          <span class="bs-stepper-circle">4</span>
+          <span class="bs-stepper-label">Finish</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+      <!-- your steps content here -->
+      <div id="signin-part" class="content" role="tabpanel" aria-labelledby="signin-part-trigger"></div>
+      <div id="plan-part" class="content" role="tabpanel" aria-labelledby="plan-part-trigger"></div>
+      <div id="payment-part" class="content" role="tabpanel" aria-labelledby="payment-part-trigger"></div>
+      <div id="finish-part" class="content" role="tabpanel" aria-labelledby="finish-part-trigger"></div>
+    </div>
+  </div>
+<!-- Horizontal Steppers -->
+
+<script>
+  $(document).ready(function () {
+  var stepper = new Stepper($('.bs-stepper')[0])
+})
+</script>

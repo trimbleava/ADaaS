@@ -4,18 +4,34 @@ from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.views.generic.edit import FormView
 
-from .forms import ContactForm
 from prj_settings.settings_dir.base_settings import DEFAULT_FROM_EMAIL
+from gui.forms import ContactForm
+from reviews.models import Category
+
 
 class HomeView(TemplateView):
     template_name = 'gui_home.html'
 
 
+class ServiceView(TemplateView):
+    template_name = 'gui_services.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(ServiceView, self).get_context_data(**kwargs)
+       
+        # Extract categories and display in the services
+        # Each Django model has at least one manager, and the default manager is called objects. 
+        # You get a QuerySet object using your model manager. To retrieve all objects from a table, 
+        # you just use the all () method on the default objects manager. Django querysets are lazy.
+        categories_qs = Category.objects.all()
+        context["data"] = categories_qs
+        return context
+  
+
 class ContactView(FormView):
     template_name = 'gui_contact.html'
     form_class = ContactForm
     success_url = '/success'   # defined in urls
-
     
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.

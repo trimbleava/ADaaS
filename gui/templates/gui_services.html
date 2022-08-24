@@ -4,6 +4,29 @@
 
 {% block maincontent %}
 
-<div id="services-content" class="container-fluid center">
+<div id="service-content" class="container-fluid center">
+    <div class="row mx-auto">
+        {% for obj in data %}
+            <div class="col-sm-4">
+                <div class="card text-center">
+                    <!-- img class="card-img-top" src="..." alt="Card image cap" -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ obj.name }}</h5>
+                        <p class="card-text">{{ obj.description }}</p>
+                    </div>
+                        
+                </div>
+            </div>    
+        {% endfor %}
+
+        {% include 'gui_stepper.html' %}
+
+        <!-- div class="btn-toolbar d-flex" role="toolbar" aria-label="Toolbar with button groups"
+        <div class="btn-toolbar mx-auto">
+            <button type="button" class="btn btn-danger btn-md mr-md-3">signin</button>
+            <button type="button" class="btn btn-warning btn-md mr-md-3">select a plan</button>
+        <button type="button" class="btn btn-success btn-md mr-md-3">manage payment</button>
+        </div -->
+    </div>
 </div>
 {% endblock maincontent %}
